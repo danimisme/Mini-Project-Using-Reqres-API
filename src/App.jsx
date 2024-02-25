@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useRoutes } from "react-router-dom";
+import { routeList } from "./route/routes";
+
 import "./App.css";
 
-function App() {
-  return (
-    <>
-      <h1>Hello World</h1>
-    </>
-  );
-}
+const App = () => {
+  const routes = useRoutes(routeList);
+  return <>{routes}</>;
+};
 
 export default App;
