@@ -5,10 +5,18 @@ const Login = () => {
     password: "",
   });
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const emailInput = e.target.email.value;
+    const passwordInput = e.target.password.value;
+    setUserInput({ email: emailInput, password: passwordInput });
+    console.log(userInput);
+  };
+
   return (
     <div className="form-container">
       <h1>Form Login</h1>
-      <form>
+      <form onSubmit={handleLogin}>
         <div className="input-container">
           <label htmlFor="email">Email</label>
           <input type="email" name="email" id="email" />
