@@ -1,4 +1,10 @@
+import { useState } from "react";
 const Login = () => {
+  const [userInput, setUserInput] = useState({
+    email: "",
+    password: "",
+  });
+
   return (
     <div className="form-container">
       <h1>Form Login</h1>
