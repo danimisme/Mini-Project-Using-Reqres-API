@@ -3,10 +3,6 @@ import { useState } from "react";
 import InputForm from "../components/Elements/Input/InputForm";
 const Login = () => {
   const [token, setToken] = useState(undefined);
-  const [userInput, setUserInput] = useState({
-    email: "",
-    password: "",
-  });
 
   const loginProcess = (data) => {
     axios
@@ -25,7 +21,6 @@ const Login = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    setUserInput(data);
     loginProcess(data);
   };
 
