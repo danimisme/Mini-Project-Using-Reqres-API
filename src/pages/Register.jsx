@@ -13,7 +13,19 @@ const Register = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    console.log(dataUser);
+    const { name, email, password } = dataUser;
+    registerProcess({ email: email, password: password });
+  };
+
+  const registerProcess = (data) => {
+    axios
+      .post("https://reqres.in/api/register", data)
+      .then((res) => {
+        setToken(res.data.token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
