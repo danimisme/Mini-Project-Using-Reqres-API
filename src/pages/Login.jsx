@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import InputForm from "../components/Elements/Input/InputForm";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 const Login = () => {
   const [token, setToken] = useState(undefined);
 
@@ -53,6 +54,9 @@ const Login = () => {
           placeholder="Enter Your Password ..."
         />
         <button type="submit">Login</button>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </form>
     </div>
   );
