@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import InputForm from "../components/Elements/Input/InputForm";
+import { useState } from "react";
 
 const Register = () => {
   const [token, setToken] = useState(undefined);
+
   return (
     <div className="form-container">
       <h1>Register</h1>
