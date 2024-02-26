@@ -24,14 +24,18 @@ const Register = () => {
       .post("https://reqres.in/api/register", data)
       .then((res) => {
         setToken(res.data.token);
+        toast.success("Register Success");
       })
       .catch((err) => {
-        console.log(err);
+        const message = err.response.data.error;
+        toast.error("Register Failed : " + message);
       });
   };
 
   return (
     <div className="form-container">
+      <ToastContainer position="top-center" theme="dark" />
+
       <h1>Register</h1>
       <form onSubmit={handleRegister}>
         <InputForm
