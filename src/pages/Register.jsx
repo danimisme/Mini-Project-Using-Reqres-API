@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 import InputForm from "../components/Elements/Input/InputForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const [token, setToken] = useState(undefined);
+
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    }
+  }, [token]);
 
   const handleRegister = (e) => {
     e.preventDefault();
