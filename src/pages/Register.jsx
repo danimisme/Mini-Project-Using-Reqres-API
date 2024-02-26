@@ -5,10 +5,20 @@ import { useState } from "react";
 const Register = () => {
   const [token, setToken] = useState(undefined);
 
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const dataUser = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    console.log(dataUser);
+  };
+
   return (
     <div className="form-container">
       <h1>Register</h1>
-      <form>
+      <form onSubmit={handleRegister}>
         <InputForm
           name="name"
           label="Name"
