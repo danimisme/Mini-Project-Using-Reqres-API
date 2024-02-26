@@ -7,6 +7,12 @@ const Register = () => {
       <h1>Register</h1>
       <form>
         <InputForm
+          name="name"
+          label="Name"
+          type="text"
+          placeholder="Enter Your Name ..."
+        />
+        <InputForm
           name="email"
           label="Email"
           type="email"
