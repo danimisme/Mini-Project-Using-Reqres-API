@@ -1,8 +1,23 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ListUser = () => {
-  const [listUser, setListUser] = useState([]);
+  const [listUsers, setListUsers] = useState([]);
+
+  const getListUsers = () => {
+    axios
+      .get("https://reqres.in/api/users?page=1")
+      .then((res) => {
+        setListUsers(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getListUsers();
+  }, []);
 
   return (
     <div className="container-lg">
