@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const ListUser = () => {
   const [listUsers, setListUsers] = useState([]);
+  const [page, setPage] = useState(1);
 
   const getListUsers = () => {
     axios
