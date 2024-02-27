@@ -8,7 +8,7 @@ const Pagination = ({ page, setPage }) => {
   return (
     <nav aria-label="...">
       <ul className="pagination">
-        <li className="page-item disabled">
+        <li className={`page-item ${page === 1 && "disabled"} `}>
           <a className="page-link">Previous</a>
         </li>
         {pageNumbers.map((number) => (
@@ -21,7 +21,7 @@ const Pagination = ({ page, setPage }) => {
             </p>
           </li>
         ))}
-        <li className="page-item">
+        <li className={`page-item ${page === pages && "disabled"} `}>
           <a className="page-link" href="#">
             Next
           </a>
