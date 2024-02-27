@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Pagination from "../components/Elements/Pagination";
 
 const User = () => {
   let { id } = useParams();
@@ -24,7 +25,10 @@ const User = () => {
   console.log(user);
 
   return (
-    <div className="container-lg mt-5">
+    <div
+      className="container-lg mt-5 d-flex flex-column "
+      style={{ height: "80vh" }}
+    >
       <div className="row justify-content-center gap-1">
         <div className="col-8 col-md-3 col-lg-4">
           <img
@@ -46,6 +50,9 @@ const User = () => {
         <Link to={`/`} className="btn btn-dark">
           Back
         </Link>
+      </div>
+      <div className="mt-auto">
+        <Pagination pages={12} />
       </div>
     </div>
   );
