@@ -72,3 +72,18 @@ button:hover {
   margin: 1rem 2rem;
   border-radius: 50%;
 }
+
+
+.pagination li p{
+  color: #000
+}
+
+
+.pagination:hover {
+  cursor: pointer;
+}
+
+.pagination .page-item .active {
+  background-color: #000;
+  color: #fff;
+}
