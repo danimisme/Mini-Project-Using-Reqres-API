@@ -46,7 +46,7 @@ const ListUser = () => {
           </div>
         ))}
       </div>
-      <Pagination page={page} setPage={setPage} />
+      <Pagination page={page} setPage={setPage} pages={2} />
     </div>
   );
 };
