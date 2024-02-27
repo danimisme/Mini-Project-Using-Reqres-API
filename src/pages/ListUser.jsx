@@ -8,7 +8,7 @@ const ListUser = () => {
 
   const getListUsers = () => {
     axios
-      .get("https://reqres.in/api/users?page=1")
+      .get(`https://reqres.in/api/users?page=${page}`)
       .then((res) => {
         setListUsers(res.data.data);
       })
@@ -19,7 +19,7 @@ const ListUser = () => {
 
   useEffect(() => {
     getListUsers();
-  }, []);
+  }, [page]);
 
   return (
     <div className="container-lg">
