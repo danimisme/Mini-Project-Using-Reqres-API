@@ -5,12 +5,18 @@ const Pagination = ({ page, setPage }) => {
     pageNumbers.push(i);
   }
 
+  const previousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
   return (
     <nav aria-label="...">
       <ul className="pagination">
         <li
           className={`page-item ${page === 1 && "disabled"} `}
-          onClick={() => setPage(page - 1)}
+          onClick={() => previousPage()}
         >
           <a className="page-link">Previous</a>
         </li>
@@ -25,9 +31,7 @@ const Pagination = ({ page, setPage }) => {
           </li>
         ))}
         <li className={`page-item ${page === pages && "disabled"} `}>
-          <a className="page-link" href="#">
-            Next
-          </a>
+          <a className="page-link">Next</a>
         </li>
       </ul>
     </nav>
