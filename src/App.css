@@ -52,3 +52,23 @@ button:hover {
   background-color: #fff;
   color: #000;
 }
+
+
+.card:hover{
+  cursor: pointer;
+  background-color: #f4f4f4;
+  box-shadow: 0 0 5px 1px #ccc;
+  img {
+    transform: scale(1.2);
+  }
+}
+
+.image-container img {
+  transition: transform 0.3s ease-in-out;
+}
+.image-container {
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 2rem;
+  border-radius: 50%;
+}
