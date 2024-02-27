@@ -24,7 +24,7 @@ const Pagination = ({ page, setPage }) => {
           className={`page-item ${page === 1 && "disabled"} `}
           onClick={() => previousPage()}
         >
-          <a className="page-link">Previous</a>
+          <p className="page-link">Previous</p>
         </li>
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
@@ -37,9 +37,9 @@ const Pagination = ({ page, setPage }) => {
           </li>
         ))}
         <li className={`page-item ${page === pages && "disabled"} `}>
-          <a className="page-link" onClick={() => nextPage()}>
+          <p className="page-link" onClick={() => nextPage()}>
             Next
-          </a>
+          </p>
         </li>
       </ul>
     </nav>
