@@ -31,7 +31,10 @@ const ListUser = () => {
             className="card col-10 col-md-4 col-lg-3 my-3  border-0"
             key={user.id}
           >
-            <Link to={`/user/${user.id}`}>
+            <Link
+              to={`/user/${user.id}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
               <div className="image-container">
                 <img
                   src={user.avatar}
