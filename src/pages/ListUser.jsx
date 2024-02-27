@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Elements/Pagination";
+import { Link } from "react-router-dom";
 
 const ListUser = () => {
   const [listUsers, setListUsers] = useState([]);
@@ -30,16 +31,18 @@ const ListUser = () => {
             className="card col-10 col-md-4 col-lg-3 my-3  border-0"
             key={user.id}
           >
-            <div className="image-container">
-              <img
-                src={user.avatar}
-                className="card-img-top img-fluid"
-                alt="..."
-              />
-            </div>
-            <div className="card-body text-center">
-              <p className="card-text fw-bold fs-4">{user.first_name}</p>
-            </div>
+            <Link to={`/user/${user.id}`}>
+              <div className="image-container">
+                <img
+                  src={user.avatar}
+                  className="card-img-top img-fluid"
+                  alt="..."
+                />
+              </div>
+              <div className="card-body text-center">
+                <p className="card-text fw-bold fs-4">{user.first_name}</p>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
