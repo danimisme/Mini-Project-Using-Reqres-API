@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Pagination from "../components/Elements/Pagination";
 
 const ListUser = () => {
   const [listUsers, setListUsers] = useState([]);
@@ -42,6 +43,7 @@ const ListUser = () => {
           </div>
         ))}
       </div>
+      <Pagination page={page} setPage={setPage} />
     </div>
   );
 };
