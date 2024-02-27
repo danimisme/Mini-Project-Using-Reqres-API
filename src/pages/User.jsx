@@ -7,7 +7,7 @@ const User = () => {
   let { id } = useParams();
 
   const [user, setUser] = useState({});
-  const [page, setPage] = useState(id);
+  const [page, setPage] = useState(Number(id));
 
   const getUser = () => {
     axios
@@ -22,8 +22,7 @@ const User = () => {
 
   useEffect(() => {
     getUser();
-  }, [id, page]);
-  console.log(user);
+  }, [page]);
 
   return (
     <div
