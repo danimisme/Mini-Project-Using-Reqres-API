@@ -7,10 +7,11 @@ const User = () => {
   let { id } = useParams();
 
   const [user, setUser] = useState({});
+  const [page, setPage] = useState(id);
 
   const getUser = () => {
     axios
-      .get(`https://reqres.in/api/users/${id}`)
+      .get(`https://reqres.in/api/users/${page}`)
       .then((res) => {
         setUser(res.data.data);
       })
@@ -21,7 +22,7 @@ const User = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [id, page]);
   console.log(user);
 
   return (
@@ -52,7 +53,7 @@ const User = () => {
         </Link>
       </div>
       <div className="mt-auto">
-        <Pagination pages={12} />
+        <Pagination pages={12} page={page} setPage={setPage} />
       </div>
     </div>
   );
