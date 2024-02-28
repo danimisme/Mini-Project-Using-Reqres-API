@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [token, setToken] = useState(undefined);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -51,12 +52,24 @@ const Login = () => {
           type="email"
           placeholder="Enter Your Email ..."
         />
-        <InputForm
-          name="password"
-          label="Password"
-          type="password"
-          placeholder="Enter Your Password ..."
-        />
+        <div className="input-container">
+          <label
+            htmlFor="password"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            Password{"  "}
+            {showPassword ? (
+              <i className="bi bi-eye-slash-fill"></i>
+            ) : (
+              <i className="bi bi-eye-fill"></i>
+            )}
+          </label>
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            id="password"
+          />
+        </div>
         <button type="submit">Login</button>
         <p>
           Don't have an account? <Link to="/register">Register</Link>
