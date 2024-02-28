@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ active }) => {
   const navigate = useNavigate();
@@ -10,9 +10,9 @@ const Navbar = ({ active }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
       <div className="container-lg">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           ReqRes
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -27,21 +27,18 @@ const Navbar = ({ active }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a
+              <Link
                 className={`nav-link ${active === "List User" && "active"}`}
                 aria-current="page"
-                href="#"
+                to="/"
               >
                 List User
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a
-                className={`nav-link ${active === "User" && "active"}`}
-                href="#"
-              >
+              <Link className={`nav-link ${active === "User" && "active"}`}>
                 User Profile
-              </a>
+              </Link>
             </li>
           </ul>
           <button
