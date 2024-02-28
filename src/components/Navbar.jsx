@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 const Navbar = ({ active }) => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
       <div className="container-lg">
@@ -36,7 +44,10 @@ const Navbar = ({ active }) => {
               </a>
             </li>
           </ul>
-          <button className="btn btn-danger rounded-pill" type="submit">
+          <button
+            className="btn btn-danger rounded-pill"
+            onClick={handleLogout}
+          >
             Logout
           </button>
         </div>
