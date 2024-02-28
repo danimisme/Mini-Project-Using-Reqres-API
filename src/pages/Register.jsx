@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PasswordField from "../components/Elements/PasswordField";
 
 const Register = () => {
   const [token, setToken] = useState(undefined);
@@ -56,10 +57,9 @@ const Register = () => {
           type="email"
           placeholder="Enter Your Email ..."
         />
-        <InputForm
+        <PasswordField
           name="password"
           label="Password"
-          type="password"
           placeholder="Enter Your Password ..."
         />
         <button type="submit">Login</button>

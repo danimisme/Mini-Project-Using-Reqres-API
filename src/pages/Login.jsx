@@ -4,10 +4,10 @@ import InputForm from "../components/Elements/Input/InputForm";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
+import PasswordField from "../components/Elements/PasswordField";
 const Login = () => {
   const [token, setToken] = useState(undefined);
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -52,24 +52,11 @@ const Login = () => {
           type="email"
           placeholder="Enter Your Email ..."
         />
-        <div className="input-container">
-          <label
-            htmlFor="password"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            Password{"  "}
-            {showPassword ? (
-              <i className="bi bi-eye-slash-fill"></i>
-            ) : (
-              <i className="bi bi-eye-fill"></i>
-            )}
-          </label>
-          <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            id="password"
-          />
-        </div>
+        <PasswordField
+          name="password"
+          label="Password"
+          placeholder="Enter Your Password ..."
+        />
         <button type="submit">Login</button>
         <p>
           Don't have an account? <Link to="/register">Register</Link>
