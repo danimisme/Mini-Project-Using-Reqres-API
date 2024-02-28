@@ -2,11 +2,16 @@ import ListUser from "../pages/ListUser";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import User from "../pages/User";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const routeList = [
   {
     path: "/",
-    element: <ListUser />,
+    element: (
+      <ProtectedRoute>
+        <ListUser />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/login",
@@ -18,6 +23,10 @@ export const routeList = [
   },
   {
     path: "/user/:id",
-    element: <User />,
+    element: (
+      <ProtectedRoute>
+        <User />
+      </ProtectedRoute>
+    ),
   },
 ];
