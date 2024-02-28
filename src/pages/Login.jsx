@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import InputForm from "../components/Elements/Input/InputForm";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [token, setToken] = useState(undefined);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
@@ -17,8 +18,11 @@ const Login = () => {
     axios
       .post("https://reqres.in/api/login", data)
       .then((res) => {
-        setToken(res.data.token);
         toast.success("Login Success");
+        setTimeout(() => {
+          setToken(res.data.token);
+          navigate("/");
+        }, 1500);
       })
       .catch((err) => {
         console.log(err);
@@ -38,7 +42,7 @@ const Login = () => {
 
   return (
     <div className="form-container">
-      <ToastContainer position="top-center" theme="dark" />
+      <ToastContainer position="top-center" theme="dark" autoClose={1000} />
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <InputForm
