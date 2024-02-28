@@ -27,8 +27,11 @@ const Navbar = ({ active }) => {
                 List User
               </a>
             </li>
-            <li className={`nav-item ${active === "User" && "active"}`}>
-              <a className="nav-link" href="#">
+            <li className="nav-item">
+              <a
+                className={`nav-link ${active === "User" && "active"}`}
+                href="#"
+              >
                 User Profile
               </a>
             </li>
