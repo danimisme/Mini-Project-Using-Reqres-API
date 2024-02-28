@@ -17,7 +17,7 @@ const Pagination = ({ page, pages, setPage }) => {
   };
 
   return (
-    <nav aria-label="...">
+    <nav aria-label="pagination" className="mt-3">
       <ul className="pagination">
         <li
           className={`page-item ${page === 1 && "disabled"} `}
@@ -26,7 +26,15 @@ const Pagination = ({ page, pages, setPage }) => {
           <p className="page-link">Previous</p>
         </li>
         {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
+          <li
+            key={number}
+            className={` ${
+              page !== number - 1 &&
+              page !== number &&
+              page !== number + 1 &&
+              "d-none d-md-block"
+            }  page-item`}
+          >
             <p
               className={`page-link ${page === number ? "active" : ""}`}
               onClick={() => setPage(number)}
