@@ -20,8 +20,8 @@ const Login = () => {
       .post("https://reqres.in/api/login", data)
       .then((res) => {
         toast.success("Login Success");
+        setToken(res.data.token);
         setTimeout(() => {
-          setToken(res.data.token);
           navigate("/");
         }, 1500);
       })
