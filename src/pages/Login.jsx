@@ -22,29 +22,31 @@ const Login = () => {
   };
 
   return (
-    <WaveHeader>
-      <div className="form-container" data-aos="fade-down">
-        <ToastContainer position="top-center" theme="dark" autoClose={1000} />
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
-          <InputForm
-            name="email"
-            label="Email"
-            type="email"
-            placeholder="Enter Your Email ..."
-          />
-          <PasswordField
-            name="password"
-            label="Password"
-            placeholder="Enter Your Password ..."
-          />
-          <button type="submit">Login</button>
-          <p>
-            Don't have an account? <Link to="/register">Register</Link>
-          </p>
-        </form>
-      </div>
-    </WaveHeader>
+    <>
+      <WaveHeader>
+        <div className="form-container" data-aos="fade-down">
+          <h1>Login</h1>
+          <form onSubmit={handleLogin}>
+            <InputForm
+              name="email"
+              label="Email"
+              type="email"
+              placeholder="Enter Your Email ..."
+            />
+            <PasswordField
+              name="password"
+              label="Password"
+              placeholder="Enter Your Password ..."
+            />
+            <button type="submit">Login</button>
+            <p>
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
+          </form>
+        </div>
+      </WaveHeader>
+      <ToastContainer position="top-center" theme="dark" autoClose={1000} />
+    </>
   );
 };
 
