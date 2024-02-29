@@ -33,3 +33,14 @@ export const registerProcess = (data) => {
       toast.error("Register Failed : " + message);
     });
 };
+
+export const getListUsers = (page, callback) => {
+  axios
+    .get(`https://reqres.in/api/users?page=${page}`)
+    .then((res) => {
+      callback(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

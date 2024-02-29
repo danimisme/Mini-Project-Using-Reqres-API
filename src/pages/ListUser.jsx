@@ -1,26 +1,15 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
+import { getListUsers } from "../utils/apiUtils";
 
 const ListUser = () => {
   const [listUsers, setListUsers] = useState([]);
   const [page, setPage] = useState(1);
 
-  const getListUsers = () => {
-    axios
-      .get(`https://reqres.in/api/users?page=${page}`)
-      .then((res) => {
-        setListUsers(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
-    getListUsers();
+    getListUsers(page, setListUsers);
   }, [page]);
 
   return (
