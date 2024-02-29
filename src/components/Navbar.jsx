@@ -36,7 +36,10 @@ const Navbar = ({ active }) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${active === "User" && "active"}`}>
+              <Link
+                className={`nav-link ${active === "User" && "active"}`}
+                to="/user/1"
+              >
                 User Profile
               </Link>
             </li>
