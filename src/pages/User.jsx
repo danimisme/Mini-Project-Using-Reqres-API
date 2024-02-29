@@ -1,27 +1,16 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Pagination from "../components/Pagination";
 import Navbar from "../components/Navbar";
 import Animation from "../../aos";
+import { getUser } from "../utils/apiUtils";
 const User = () => {
   let { id } = useParams();
   const [user, setUser] = useState({});
   const [page, setPage] = useState(Number(id));
 
-  const getUser = () => {
-    axios
-      .get(`https://reqres.in/api/users/${page}`)
-      .then((res) => {
-        setUser(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
-    getUser();
+    getUser(page, setUser);
     Animation();
   }, [page]);
 

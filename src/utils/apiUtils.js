@@ -44,3 +44,14 @@ export const getListUsers = (page, callback) => {
       console.log(err);
     });
 };
+
+export const getUser = (page, callback) => {
+  axios
+    .get(`https://reqres.in/api/users/${page}`)
+    .then((res) => {
+      callback(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
