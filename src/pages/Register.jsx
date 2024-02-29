@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PasswordField from "../components/Elements/PasswordField";
 import { useNavigate } from "react-router-dom";
+import WaveHeader from "../components/WaveHeader";
 
 const Register = () => {
   const [token, setToken] = useState(undefined);
@@ -45,34 +46,36 @@ const Register = () => {
   };
 
   return (
-    <div className="form-container">
-      <ToastContainer position="top-center" theme="dark" autoClose={1000} />
+    <WaveHeader>
+      <div className="form-container">
+        <ToastContainer position="top-center" theme="dark" autoClose={1000} />
 
-      <h1>Register</h1>
-      <form onSubmit={handleRegister}>
-        <InputForm
-          name="name"
-          label="Name"
-          type="text"
-          placeholder="Enter Your Name ..."
-        />
-        <InputForm
-          name="email"
-          label="Email"
-          type="email"
-          placeholder="Enter Your Email ..."
-        />
-        <PasswordField
-          name="password"
-          label="Password"
-          placeholder="Enter Your Password ..."
-        />
-        <button type="submit">Register</button>
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
-      </form>
-    </div>
+        <h1>Register</h1>
+        <form onSubmit={handleRegister}>
+          <InputForm
+            name="name"
+            label="Name"
+            type="text"
+            placeholder="Enter Your Name ..."
+          />
+          <InputForm
+            name="email"
+            label="Email"
+            type="email"
+            placeholder="Enter Your Email ..."
+          />
+          <PasswordField
+            name="password"
+            label="Password"
+            placeholder="Enter Your Password ..."
+          />
+          <button type="submit">Register</button>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </form>
+      </div>
+    </WaveHeader>
   );
 };
 
