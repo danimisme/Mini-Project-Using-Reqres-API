@@ -7,12 +7,14 @@ import "react-toastify/dist/ReactToastify.css";
 import PasswordField from "../components/Elements/PasswordField";
 import { useNavigate } from "react-router-dom";
 import WaveHeader from "../components/WaveHeader";
+import Animation from "../../aos";
 
 const Register = () => {
   const [token, setToken] = useState(undefined);
   const navigate = useNavigate();
 
   useEffect(() => {
+    Animation();
     if (token) {
       localStorage.setItem("token", token);
     }
@@ -47,7 +49,7 @@ const Register = () => {
 
   return (
     <WaveHeader>
-      <div className="form-container">
+      <div className="form-container" data-aos="fade-down">
         <ToastContainer position="top-center" theme="dark" autoClose={1000} />
 
         <h1>Register</h1>
