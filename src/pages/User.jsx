@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Pagination from "../components/Elements/Pagination";
+import Pagination from "../components/Pagination";
 import Navbar from "../components/Navbar";
 
 const User = () => {

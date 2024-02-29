@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Pagination from "../components/Elements/Pagination";
+import Pagination from "../components/Pagination";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 
