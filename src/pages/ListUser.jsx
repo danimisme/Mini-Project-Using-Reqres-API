@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Elements/Pagination";
-import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Card from "../components/Card";
 
 const ListUser = () => {
   const [listUsers, setListUsers] = useState([]);
@@ -30,26 +30,13 @@ const ListUser = () => {
         <h1 className="text-center">Hello ReqRes Users !</h1>
         <div className="row  justify-content-center gap-1">
           {listUsers.map((user) => (
-            <div
-              className="card col-10 col-md-4 col-lg-3 my-3  border-0"
+            <Card
               key={user.id}
-            >
-              <Link
-                to={`/user/${user.id}`}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <div className="image-container">
-                  <img
-                    src={user.avatar}
-                    className="card-img-top img-fluid"
-                    alt="..."
-                  />
-                </div>
-                <div className="card-body text-center">
-                  <p className="card-text fw-bold fs-4">{user.first_name}</p>
-                </div>
-              </Link>
-            </div>
+              id={user.id}
+              avatar={user.avatar}
+              firstName={user.first_name}
+              email={user.email}
+            />
           ))}
         </div>
         <Pagination page={page} setPage={setPage} pages={2} />
