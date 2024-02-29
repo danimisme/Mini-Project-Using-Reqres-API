@@ -5,9 +5,11 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PasswordField from "../components/Elements/PasswordField";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [token, setToken] = useState(undefined);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
@@ -32,6 +34,9 @@ const Register = () => {
       .then((res) => {
         setToken(res.data.token);
         toast.success("Register Success");
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
       })
       .catch((err) => {
         const message = err.response.data.error;
@@ -41,7 +46,7 @@ const Register = () => {
 
   return (
     <div className="form-container">
-      <ToastContainer position="top-center" theme="dark" />
+      <ToastContainer position="top-center" theme="dark" autoClose={1000} />
 
       <h1>Register</h1>
       <form onSubmit={handleRegister}>
@@ -62,7 +67,7 @@ const Register = () => {
           label="Password"
           placeholder="Enter Your Password ..."
         />
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>
