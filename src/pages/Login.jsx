@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordField from "../components/Elements/PasswordField";
+import WaveHeader from "../components/WaveHeader";
 const Login = () => {
   const [token, setToken] = useState(undefined);
   const navigate = useNavigate();
@@ -42,27 +43,29 @@ const Login = () => {
   };
 
   return (
-    <div className="form-container">
-      <ToastContainer position="top-center" theme="dark" autoClose={1000} />
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <InputForm
-          name="email"
-          label="Email"
-          type="email"
-          placeholder="Enter Your Email ..."
-        />
-        <PasswordField
-          name="password"
-          label="Password"
-          placeholder="Enter Your Password ..."
-        />
-        <button type="submit">Login</button>
-        <p>
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
-      </form>
-    </div>
+    <WaveHeader>
+      <div className="form-container">
+        <ToastContainer position="top-center" theme="dark" autoClose={1000} />
+        <h1>Login</h1>
+        <form onSubmit={handleLogin}>
+          <InputForm
+            name="email"
+            label="Email"
+            type="email"
+            placeholder="Enter Your Email ..."
+          />
+          <PasswordField
+            name="password"
+            label="Password"
+            placeholder="Enter Your Password ..."
+          />
+          <button type="submit">Login</button>
+          <p>
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
+        </form>
+      </div>
+    </WaveHeader>
   );
 };
 
