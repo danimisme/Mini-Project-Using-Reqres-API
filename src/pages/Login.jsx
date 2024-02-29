@@ -6,11 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordField from "../components/Elements/PasswordField";
 import WaveHeader from "../components/WaveHeader";
+import Animation from "../../aos";
 const Login = () => {
   const [token, setToken] = useState(undefined);
   const navigate = useNavigate();
 
   useEffect(() => {
+    Animation();
     if (token) {
       localStorage.setItem("token", token);
     }
@@ -44,7 +46,7 @@ const Login = () => {
 
   return (
     <WaveHeader>
-      <div className="form-container">
+      <div className="form-container" data-aos="fade-down">
         <ToastContainer position="top-center" theme="dark" autoClose={1000} />
         <h1>Login</h1>
         <form onSubmit={handleLogin}>
