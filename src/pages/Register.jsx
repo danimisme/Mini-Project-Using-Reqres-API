@@ -1,24 +1,18 @@
 import { Link } from "react-router-dom";
 import InputForm from "../components/Elements/Input/InputForm";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PasswordField from "../components/Elements/PasswordField";
 import { useNavigate } from "react-router-dom";
 import WaveHeader from "../components/WaveHeader";
 import Animation from "../../aos";
+import { registerProcess } from "../utils/apiUtils";
 
 const Register = () => {
-  const [token, setToken] = useState(undefined);
-  const navigate = useNavigate();
-
   useEffect(() => {
     Animation();
-    if (token) {
-      localStorage.setItem("token", token);
-    }
-  }, [token]);
+  }, []);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -29,22 +23,6 @@ const Register = () => {
     };
     const { name, email, password } = dataUser;
     registerProcess({ email: email, password: password });
-  };
-
-  const registerProcess = (data) => {
-    axios
-      .post("https://reqres.in/api/register", data)
-      .then((res) => {
-        setToken(res.data.token);
-        toast.success("Register Success");
-        setTimeout(() => {
-          navigate("/");
-        }, 1500);
-      })
-      .catch((err) => {
-        const message = err.response.data.error;
-        toast.error("Register Failed : " + message);
-      });
   };
 
   return (
