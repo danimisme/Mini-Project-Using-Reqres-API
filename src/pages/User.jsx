@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "../components/Pagination";
 import Navbar from "../components/Navbar";
-
+import Animation from "../../aos";
 const User = () => {
   let { id } = useParams();
-
   const [user, setUser] = useState({});
   const [page, setPage] = useState(Number(id));
 
@@ -23,6 +22,7 @@ const User = () => {
 
   useEffect(() => {
     getUser();
+    Animation();
   }, [page]);
 
   return (
@@ -38,9 +38,13 @@ const User = () => {
               src={user.avatar}
               className="img-fluid w-100 rounded"
               alt="avatar"
+              data-aos="fade-right"
             />
           </div>
-          <div className="col-10 col-md-4 col-lg-5 align-self-center">
+          <div
+            className="col-10 col-md-4 col-lg-5 align-self-center"
+            data-aos="fade-left"
+          >
             <ul className="list-group list-group-flush">
               <li className="list-group-item">ID : {user.id}</li>
               <li className="list-group-item">
