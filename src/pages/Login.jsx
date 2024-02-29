@@ -1,39 +1,16 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import InputForm from "../components/Elements/Input/InputForm";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PasswordField from "../components/Elements/PasswordField";
 import WaveHeader from "../components/WaveHeader";
 import Animation from "../../aos";
+import { loginProcess } from "../utils/apiUtils";
 const Login = () => {
-  const [token, setToken] = useState(undefined);
-  const navigate = useNavigate();
-
   useEffect(() => {
     Animation();
-    if (token) {
-      localStorage.setItem("token", token);
-    }
-  }, [token]);
-
-  const loginProcess = (data) => {
-    axios
-      .post("https://reqres.in/api/login", data)
-      .then((res) => {
-        toast.success("Login Success");
-        setToken(res.data.token);
-        setTimeout(() => {
-          navigate("/");
-        }, 1500);
-      })
-      .catch((err) => {
-        console.log(err);
-        const message = err.response.data.error;
-        toast.error("Login Failed : " + message);
-      });
-  };
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();

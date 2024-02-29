@@ -1,12 +1,12 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const loginProcess = (data, callback) => {
+export const loginProcess = (data) => {
   axios
     .post("https://reqres.in/api/login", data)
     .then((res) => {
       toast.success("Login Success");
-      callback(res.data.token);
+      localStorage.setItem("token", res.data.token);
       setTimeout(() => {
         window.location.href = "/";
       }, 1500);
