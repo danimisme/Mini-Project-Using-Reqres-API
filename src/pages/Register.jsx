@@ -26,36 +26,37 @@ const Register = () => {
   };
 
   return (
-    <WaveHeader>
-      <div className="form-container" data-aos="fade-down">
-        <ToastContainer position="top-center" theme="dark" autoClose={1000} />
-
-        <h1>Register</h1>
-        <form onSubmit={handleRegister}>
-          <InputForm
-            name="name"
-            label="Name"
-            type="text"
-            placeholder="Enter Your Name ..."
-          />
-          <InputForm
-            name="email"
-            label="Email"
-            type="email"
-            placeholder="Enter Your Email ..."
-          />
-          <PasswordField
-            name="password"
-            label="Password"
-            placeholder="Enter Your Password ..."
-          />
-          <button type="submit">Register</button>
-          <p>
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
-        </form>
-      </div>
-    </WaveHeader>
+    <>
+      <WaveHeader>
+        <div className="form-container" data-aos="fade-down">
+          <h1>Register</h1>
+          <form onSubmit={handleRegister}>
+            <InputForm
+              name="name"
+              label="Name"
+              type="text"
+              placeholder="Enter Your Name ..."
+            />
+            <InputForm
+              name="email"
+              label="Email"
+              type="email"
+              placeholder="Enter Your Email ..."
+            />
+            <PasswordField
+              name="password"
+              label="Password"
+              placeholder="Enter Your Password ..."
+            />
+            <button type="submit">Register</button>
+            <p>
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+          </form>
+        </div>
+      </WaveHeader>
+      <ToastContainer position="top-center" theme="dark" autoClose={1000} />
+    </>
   );
 };
 
