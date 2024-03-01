@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import WaveHeader from "../components/WaveHeader";
 import Animation from "../../aos";
 import { registerProcess } from "../utils/apiUtils";
+import ImageContainer from "../components/Elements/ImageContainer";
 
 const Register = () => {
   useEffect(() => {
@@ -28,17 +29,7 @@ const Register = () => {
   return (
     <>
       <WaveHeader>
-        <div
-          className="image-form col-4 d-none d-lg-block"
-          style={{ zIndex: "1" }}
-        >
-          <img
-            src="./image/register.png"
-            alt=""
-            className="img-fluid"
-            data-aos="fade-right"
-          />
-        </div>
+        <ImageContainer src="./image/register.png" alt="image" />
         <div className="form-container" data-aos="fade-down">
           <h1>Register</h1>
           <form onSubmit={handleRegister}>
