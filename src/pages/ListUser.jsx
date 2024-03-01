@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Pagination from "../components/Pagination";
-import Navbar from "../components/Navbar";
-import Card from "../components/Card";
+import Pagination from "../components/Fragments/Pagination";
+import Navbar from "../components/Fragments/Navbar";
+import Card from "../components/Fragments/Card";
 import { getListUsers } from "../utils/apiUtils";
 
 const ListUser = () => {

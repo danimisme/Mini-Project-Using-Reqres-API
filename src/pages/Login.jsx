@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import InputForm from "../components/Elements/Input/InputForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import PasswordField from "../components/Elements/PasswordField";
-import WaveHeader from "../components/WaveHeader";
+import WaveHeader from "../components/Fragments/WaveHeader";
 import Animation from "../../aos";
 import { loginProcess } from "../utils/apiUtils";
 import ImageContainer from "../components/Elements/ImageContainer";

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Animation from "../../aos";
+import Animation from "../../../aos";
 import { useEffect } from "react";
 
 const Card = (props) => {
