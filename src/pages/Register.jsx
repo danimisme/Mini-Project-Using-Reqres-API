@@ -28,6 +28,17 @@ const Register = () => {
   return (
     <>
       <WaveHeader>
+        <div
+          className="image-form col-4 d-none d-lg-block"
+          style={{ zIndex: "1" }}
+        >
+          <img
+            src="./image/register.png"
+            alt=""
+            className="img-fluid"
+            data-aos="fade-right"
+          />
+        </div>
         <div className="form-container" data-aos="fade-down">
           <h1>Register</h1>
           <form onSubmit={handleRegister}>
