@@ -105,6 +105,12 @@ button:hover {
   cursor: pointer;
 }
 
+.user-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+}
+
 .pagination .page-item .active {
   background-color: #000;
   color: #fff;

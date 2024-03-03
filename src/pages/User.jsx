@@ -18,10 +18,7 @@ const User = () => {
   return (
     <>
       <Navbar active={"User"} />
-      <div
-        className="container-lg mt-5 d-flex flex-column "
-        style={{ height: "80vh" }}
-      >
+      <div className=" user-container container-lg mt-5">
         <UserDetailCard {...user} />
         <div className="mt-auto">
           <Pagination pages={12} page={page} setPage={setPage} />
