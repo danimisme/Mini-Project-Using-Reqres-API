@@ -14,7 +14,7 @@ const ListUser = () => {
   }, [page]);
 
   return (
-    <Layout>
+    <Layout navActive="List User">
       <div className="container-lg">
         <h1 className="text-center">Hello ReqRes Users !</h1>
         <div className="row  justify-content-center gap-1">

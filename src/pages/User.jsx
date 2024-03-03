@@ -17,7 +17,7 @@ const User = () => {
   }, [page]);
 
   return (
-    <Layout>
+    <Layout navActive="User">
       <div className=" user-container container-lg mt-5">
         <UserDetailCard {...user} />
         <div className="mt-auto">
