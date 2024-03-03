@@ -6,7 +6,7 @@ const Card = (props) => {
   useEffect(() => {
     Animation();
   }, []);
-  const { avatar, id, firstName, email } = props;
+  const { avatar, id, first_name, email } = props;
   return (
     <div
       className="card col-10 col-md-4 col-lg-3 my-3 mx-2"
@@ -22,7 +22,7 @@ const Card = (props) => {
         </div>
         <div className="card-body text-center ">
           <p className="card-text fw-bold fs-4 border-2 border-bottom">
-            {firstName}
+            {first_name}
           </p>
           <p className="card-text"> {email}</p>
         </div>
