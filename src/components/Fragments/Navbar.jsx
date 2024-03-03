@@ -1,14 +1,24 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ active }) => {
+  const [navStyle, setNavStyle] = useState("");
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
 
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      setNavStyle("bg-dark navbar-dark");
+    } else {
+      setNavStyle("");
+    }
+  });
+
   return (
-    <nav className="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+    <nav className={`navbar navbar-expand-lg sticky-top ${navStyle}`}>
       <div className="container-lg">
         <Link className="navbar-brand" to="/">
           ReqRes
