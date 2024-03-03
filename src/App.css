@@ -171,3 +171,18 @@ button:hover {
   color: #fff;
   background-color: #1d1b1b ;
 }
+
+.dark-mode .form-container form {
+  background-color: #28282e;
+  color: #fff;
+}
+
+.dark-mode .form-container form input , .dark-mode .form-container form .input-container input  {
+  background-color: #28282e;
+  color: #fff;
+  border: 1px solid #454545;
+}
+
+.dark-mode .image-form img {
+  filter: invert(80%);
+}
