@@ -1,6 +1,4 @@
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import WaveHeader from "../components/Fragments/WaveHeader";
 import ImageContainer from "../components/Elements/ImageContainer";
 import LoginForm from "../components/Fragments/LoginForm";
 import AuthLayout from "../components/Layouts/AuthLayout";
