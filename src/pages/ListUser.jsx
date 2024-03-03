@@ -19,13 +19,7 @@ const ListUser = () => {
         <h1 className="text-center">Hello ReqRes Users !</h1>
         <div className="row  justify-content-center gap-1">
           {listUsers.map((user) => (
-            <Card
-              key={user.id}
-              id={user.id}
-              avatar={user.avatar}
-              firstName={user.first_name}
-              email={user.email}
-            />
+            <Card key={user.id} {...user} />
           ))}
         </div>
         <Pagination page={page} setPage={setPage} pages={2} />
