@@ -1,14 +1,14 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const loginProcess = (data) => {
+export const loginProcess = (data, callback) => {
   axios
     .post("https://reqres.in/api/login", data)
     .then((res) => {
       toast.success("Login Success");
       localStorage.setItem("token", res.data.token);
       setTimeout(() => {
-        window.location.href = "/";
+        callback("/");
       }, 1500);
     })
     .catch((err) => {
@@ -18,14 +18,14 @@ export const loginProcess = (data) => {
     });
 };
 
-export const registerProcess = (data) => {
+export const registerProcess = (data, callback) => {
   axios
     .post("https://reqres.in/api/register", data)
     .then((res) => {
       toast.success("Register Success");
       localStorage.setItem("token", res.data.token);
       setTimeout(() => {
-        window.location.href = "/";
+        callback("/");
       }, 1500);
     })
     .catch((err) => {

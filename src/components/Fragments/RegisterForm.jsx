@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import Animation from "../../../aos";
 import InputForm from "../Elements/Input/InputForm";
 import { registerProcess } from "../../utils/apiUtils";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordField from "../Elements/PasswordField";
 const RegisterForm = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     Animation();
   }, []);
@@ -17,7 +18,7 @@ const RegisterForm = () => {
       password: e.target.password.value,
     };
     const { name, email, password } = dataUser;
-    registerProcess({ email: email, password: password });
+    registerProcess({ email: email, password: password }, navigate);
   };
   return (
     <div className="form-container" data-aos="fade-down">

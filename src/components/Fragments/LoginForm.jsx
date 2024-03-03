@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginProcess } from "../../utils/apiUtils";
 import InputForm from "../Elements/Input/InputForm";
 import PasswordField from "../Elements/PasswordField";
@@ -9,13 +9,14 @@ const LoginForm = () => {
   useEffect(() => {
     Animation();
   });
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const data = {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    loginProcess(data);
+    loginProcess(data, navigate);
   };
   return (
     <div className="form-container" data-aos="fade-down">
