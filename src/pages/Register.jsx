@@ -3,16 +3,14 @@ import "react-toastify/dist/ReactToastify.css";
 import WaveHeader from "../components/Fragments/WaveHeader";
 import ImageContainer from "../components/Elements/ImageContainer";
 import RegisterForm from "../components/Fragments/RegisterForm";
+import AuthLayout from "../components/Layouts/AuthLayout";
 
 const Register = () => {
   return (
-    <>
-      <WaveHeader>
-        <ImageContainer src="./image/register.png" alt="image" />
-        <RegisterForm />
-      </WaveHeader>
-      <ToastContainer position="top-center" theme="dark" autoClose={1000} />
-    </>
+    <AuthLayout>
+      <ImageContainer src="./image/register.png" alt="image" />
+      <RegisterForm />
+    </AuthLayout>
   );
 };
 

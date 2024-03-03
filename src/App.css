@@ -167,7 +167,7 @@ button:hover {
   color: #fff;
 }
 
-.dark-mode ul li {
+.dark-mode ul li.list-group-item {
   color: #fff;
   background-color: #1d1b1b ;
 }

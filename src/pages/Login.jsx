@@ -3,15 +3,13 @@ import "react-toastify/dist/ReactToastify.css";
 import WaveHeader from "../components/Fragments/WaveHeader";
 import ImageContainer from "../components/Elements/ImageContainer";
 import LoginForm from "../components/Fragments/LoginForm";
+import AuthLayout from "../components/Layouts/AuthLayout";
 const Login = () => {
   return (
-    <>
-      <WaveHeader>
-        <ImageContainer src="./image/login-image.png" alt="image" />
-        <LoginForm />
-      </WaveHeader>
-      <ToastContainer position="top-center" theme="dark" autoClose={1000} />
-    </>
+    <AuthLayout>
+      <ImageContainer src="./image/login-image.png" alt="image" />
+      <LoginForm />
+    </AuthLayout>
   );
 };
 
