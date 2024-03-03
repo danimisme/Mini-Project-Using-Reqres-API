@@ -119,3 +119,11 @@ button:hover {
   background-color: #000;
   color: #fff;
 }
+
+/* Dark Mode */
+
+.dark-mode {
+  background-color: #1b1b1d;
+  color: #fff;
+
+}
