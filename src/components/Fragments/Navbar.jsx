@@ -66,7 +66,7 @@ const Navbar = ({ active }) => {
                 </li>
               </ul>
               <button
-                className="btn btn-outline-danger rounded-pill"
+                className="btn btn-danger rounded-pill"
                 onClick={handleLogout}
               >
                 Logout
@@ -89,7 +89,7 @@ const Navbar = ({ active }) => {
         ) : (
           <>
             <button
-              className="btn btn-outline-secondary rounded-pill ms-2 border-0"
+              className="btn btn-outline-secondary rounded-pill ms-2 "
               onClick={() => setIsDarkMode(!isDarkMode)}
             >
               <i
