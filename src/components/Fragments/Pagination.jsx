@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { DarkMode } from "../../context/DarkMode";
+
 const Pagination = ({ page, pages, setPage }) => {
+  const { isDarkMode } = useContext(DarkMode);
   const pageNumbers = [];
   for (let i = 1; i <= pages; i++) {
     pageNumbers.push(i);
@@ -20,10 +24,12 @@ const Pagination = ({ page, pages, setPage }) => {
     <nav aria-label="pagination" className="mt-3">
       <ul className="pagination">
         <li
-          className={`page-item ${page === 1 && "disabled"} `}
+          className={`page-item ${page === 1 && "disabled"}  `}
           onClick={() => previousPage()}
         >
-          <p className="page-link">Previous</p>
+          <p className={`page-link  ${isDarkMode && "dark-pagination"}`}>
+            Previous
+          </p>
         </li>
         {pageNumbers.map((number) => (
           <li
@@ -36,7 +42,9 @@ const Pagination = ({ page, pages, setPage }) => {
             }  page-item`}
           >
             <p
-              className={`page-link ${page === number ? "active" : ""}`}
+              className={`page-link ${page === number && "active"} ${
+                isDarkMode && "dark-pagination"
+              }`}
               onClick={() => setPage(number)}
             >
               {number}
@@ -44,7 +52,10 @@ const Pagination = ({ page, pages, setPage }) => {
           </li>
         ))}
         <li className={`page-item ${page === pages && "disabled"} `}>
-          <p className="page-link" onClick={() => nextPage()}>
+          <p
+            className={`page-link ${isDarkMode && "dark-pagination"}`}
+            onClick={() => nextPage()}
+          >
             Next
           </p>
         </li>

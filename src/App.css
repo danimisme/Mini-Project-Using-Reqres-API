@@ -100,6 +100,7 @@ button:hover {
 }
 
 
+
 .pagination li p{
   color: #000
 }
@@ -118,6 +119,7 @@ button:hover {
 .pagination .page-item .active {
   background-color: #000;
   color: #fff;
+  border: 1px solid #ccc;
 }
 
 /* Dark Mode */
@@ -142,4 +144,25 @@ button:hover {
 .dark-card .card-text {
   color: #fff;
   font-weight: 300;
+}
+
+.dark-pagination {
+  background-color: #28282e;
+}
+.dark-pagination:hover {
+  background-color: #000;
+}
+
+
+.pagination li p.dark-pagination{
+  color: #fff;
+}
+
+.pagination li p.dark-pagination{
+  color: #fff;
+}
+
+.pagination .disabled p.dark-pagination {
+  background-color: #000;
+  color: #fff;
 }
