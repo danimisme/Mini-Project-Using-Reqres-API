@@ -17,7 +17,7 @@ const UserDetailCard = (props) => {
           className="col-10 col-md-4 col-lg-5 align-self-center"
           data-aos="fade-left"
         >
-          <ul className="list-group list-group-flush">
+          <ul className="list-group list-group-flush ">
             <li className="list-group-item">ID : {id}</li>
             <li className="list-group-item">First Name : {first_name}</li>
             <li className="list-group-item">Last Name : {last_name}</li>
