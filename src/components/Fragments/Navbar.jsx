@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { DarkMode } from "../../context/DarkMode";
 const Navbar = ({ active }) => {
   const [navStyle, setNavStyle] = useState("");
+  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -18,7 +19,11 @@ const Navbar = ({ active }) => {
   });
 
   return (
-    <nav className={`navbar navbar-expand-lg sticky-top ${navStyle}`}>
+    <nav
+      className={`navbar navbar-expand-lg sticky-top ${navStyle} ${
+        isDarkMode && "bg-dark navbar-dark"
+      }`}
+    >
       <div className="container-lg">
         <Link className="navbar-brand" to="/">
           ReqRes
@@ -55,10 +60,21 @@ const Navbar = ({ active }) => {
             </li>
           </ul>
           <button
-            className="btn btn-danger rounded-pill"
+            className="btn btn-outline-danger rounded-pill"
             onClick={handleLogout}
           >
             Logout
+          </button>
+          <button
+            className="btn btn-outline-secondary rounded-pill ms-2 border-0"
+            onClick={() => setIsDarkMode(!isDarkMode)}
+          >
+            <i
+              className={`bi ${
+                isDarkMode ? "bi-brightness-high-fill" : "bi-moon-stars-fill"
+              } `}
+            ></i>
+            {isDarkMode ? " Light" : " Dark"}
           </button>
         </div>
       </div>
