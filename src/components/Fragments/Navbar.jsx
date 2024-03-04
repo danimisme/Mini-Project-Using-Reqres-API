@@ -22,7 +22,7 @@ const Navbar = ({ active }) => {
   return (
     <nav
       className={`navbar navbar-expand-lg sticky-top ${navStyle} ${
-        isDarkMode && "bg-dark navbar-dark"
+        isDarkMode && " navbar-dark"
       }`}
     >
       <div className="container-lg">
