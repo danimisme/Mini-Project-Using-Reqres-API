@@ -36,13 +36,8 @@ export const registerProcess = (data, callback) => {
 
 export const getListUsers = async (page, callback) => {
   const users = [];
-  const itemsPerPage = 6;
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
   if (localStorage.getItem("users")) {
-    callback(
-      JSON.parse(localStorage.getItem("users")).slice(startIndex, endIndex)
-    );
+    callback(JSON.parse(localStorage.getItem("users")));
     console.log("get users from local storage");
   } else if (!localStorage.getItem("users")) {
     try {
@@ -51,7 +46,7 @@ export const getListUsers = async (page, callback) => {
         users.push(user.data.data);
       }
       localStorage.setItem("users", JSON.stringify(users));
-      callback(users.slice(startIndex, endIndex));
+      callback(users);
       console.log("get users from api");
     } catch (error) {
       console.log(error);
