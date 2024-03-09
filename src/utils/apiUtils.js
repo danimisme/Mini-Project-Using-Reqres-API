@@ -34,15 +34,29 @@ export const registerProcess = (data, callback) => {
     });
 };
 
-export const getListUsers = (page, callback) => {
-  axios
-    .get(`https://reqres.in/api/users?page=${page}`)
-    .then((res) => {
-      callback(res.data.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+export const getListUsers = async (page, callback) => {
+  const users = [];
+  const itemsPerPage = 6;
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  if (localStorage.getItem("users")) {
+    callback(
+      JSON.parse(localStorage.getItem("users")).slice(startIndex, endIndex)
+    );
+    console.log("get users from local storage");
+  } else if (!localStorage.getItem("users")) {
+    try {
+      for (let i = 1; i <= 12; i++) {
+        const user = await axios.get(`https://reqres.in/api/users/${i}`);
+        users.push(user.data.data);
+      }
+      localStorage.setItem("users", JSON.stringify(users));
+      callback(users.slice(startIndex, endIndex));
+      console.log("get users from api");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 };
 
 export const getUser = (page, callback) => {
