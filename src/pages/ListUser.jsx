@@ -3,6 +3,7 @@ import Pagination from "../components/Fragments/Pagination";
 import Card from "../components/Fragments/Card";
 import { getListUsers } from "../utils/apiUtils";
 import Layout from "../components/Layouts/Layout";
+import UserForm from "../components/Fragments/UserForm";
 
 const ListUser = () => {
   const [listUsers, setListUsers] = useState([]);
@@ -18,6 +19,7 @@ const ListUser = () => {
 
   return (
     <Layout navActive="List User">
+      <UserForm />
       <div className="container-lg">
         <h1 className="text-center">Hello ReqRes Users !</h1>
         <button className="btn btn-dark d-block mx-auto my-3 fs-5">
