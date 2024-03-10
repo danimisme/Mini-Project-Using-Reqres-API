@@ -1,10 +1,16 @@
 import InputForm from "../Elements/Input/InputForm";
+import { hide } from "../../redux/reducers/modalShowReducer";
+import { useDispatch, useSelector } from "react-redux";
 const UserForm = () => {
+  const modalShow = useSelector((state) => state.modalShow.modalShow);
+  const dispatch = useDispatch();
   return (
-    <div className="modal">
+    <div className={`modal ${modalShow ? "d-flex" : "d-none"}`}>
       <div className="user-form-container">
         <h1>User Form</h1>
-        <span className="close-button">&times;</span>
+        <span className="close-button" onClick={() => dispatch(hide())}>
+          &times;
+        </span>
         <form>
           <InputForm
             name="firstName"
