@@ -20,6 +20,9 @@ const ListUser = () => {
     <Layout navActive="List User">
       <div className="container-lg">
         <h1 className="text-center">Hello ReqRes Users !</h1>
+        <button className="btn btn-dark d-block mx-auto my-3 fs-5">
+          <i className="bi bi-person-plus-fill me-2"></i>Add User
+        </button>
         <div className="row  justify-content-center gap-1">
           {listUsers.slice(startIndex, endIndex).map((user) => (
             <Card key={user.id} {...user} />
