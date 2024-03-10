@@ -1,11 +1,13 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { DarkMode } from "../../context/DarkMode";
+import { setDarkMode } from "../../redux/reducers/darkModeReducers";
+import { useDispatch, useSelector } from "react-redux";
 const Navbar = ({ active }) => {
   const token = localStorage.getItem("token");
   const [navStyle, setNavStyle] = useState("");
-  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const navigate = useNavigate();
+  const isDarkMode = useSelector((state) => state.darkMode.isDarkMode);
+  const dispatch = useDispatch();
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
@@ -73,7 +75,7 @@ const Navbar = ({ active }) => {
               </button>
               <button
                 className="btn btn-outline-secondary rounded-pill ms-2 border-0"
-                onClick={() => setIsDarkMode(!isDarkMode)}
+                onClick={() => dispatch(setDarkMode())}
               >
                 <i
                   className={`bi ${

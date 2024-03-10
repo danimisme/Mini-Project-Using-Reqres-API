@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { DarkMode } from "../../context/DarkMode";
+import { useSelector } from "react-redux";
 
 const Pagination = ({ page, pages, setPage }) => {
-  const { isDarkMode } = useContext(DarkMode);
+  const isDarkMode = useSelector((state) => state.darkMode.isDarkMode);
   const pageNumbers = [];
   for (let i = 1; i <= pages; i++) {
     pageNumbers.push(i);

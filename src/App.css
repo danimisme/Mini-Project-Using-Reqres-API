@@ -200,6 +200,7 @@ button:hover {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.4s;
 }
 
  .user-form-container {
@@ -209,6 +210,9 @@ button:hover {
   padding: 20px;
   border-radius: 10px;
   width: 350px;
+  transform: translate(0%,-100%);
+  transition: all 0.4s;
+  overflow-y: hidden;
 }
 
  .user-form-container form .input-container input  {
@@ -228,4 +232,23 @@ button:hover {
 
 .close-button:hover {
   color: red;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(0%,0%);
+}
+
+.show .user-form-container {
+  transform: translate(0%,0%);
+}
+
+.hide .user-form-container {
+  transform: translate(0%,-100%);
 }

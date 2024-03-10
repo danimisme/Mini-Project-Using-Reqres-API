@@ -1,12 +1,10 @@
-import { DarkMode } from "../../context/DarkMode";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import Navbar from "../Fragments/Navbar";
 import WaveHeader from "../Fragments/WaveHeader";
 import { ToastContainer } from "react-toastify";
 
 const AuthLayout = ({ children }) => {
-  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
-
+  const isDarkMode = useSelector((state) => state.darkMode.isDarkMode);
   return (
     <div className={`container-fluid p-0 m-0 ${isDarkMode && "dark-mode"}`}>
       <Navbar />

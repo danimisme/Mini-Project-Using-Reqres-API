@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import Animation from "../../../aos";
-import { useEffect, useContext } from "react";
-import { DarkMode } from "../../context/DarkMode";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Card = (props) => {
   const { avatar, id, first_name, email } = props;
-  const { isDarkMode, setDarkMode } = useContext(DarkMode);
+  const isDarkMode = useSelector((state) => state.darkMode.isDarkMode);
   useEffect(() => {
     Animation();
   }, [isDarkMode]);

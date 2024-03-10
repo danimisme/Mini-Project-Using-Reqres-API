@@ -5,7 +5,7 @@ const UserForm = () => {
   const modalShow = useSelector((state) => state.modalShow.modalShow);
   const dispatch = useDispatch();
   return (
-    <div className={`modal ${modalShow ? "d-flex" : "d-none"}`}>
+    <div className={`modal ${modalShow ? "show" : "hide"}`}>
       <div className="user-form-container">
         <h1>User Form</h1>
         <span className="close-button" onClick={() => dispatch(hide())}>

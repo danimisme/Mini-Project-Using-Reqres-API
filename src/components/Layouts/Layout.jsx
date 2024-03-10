@@ -1,11 +1,9 @@
 import Footer from "../Fragments/Footer";
 import Navbar from "../Fragments/Navbar";
-import { DarkMode } from "../../context/DarkMode";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 const Layout = ({ children, navActive }) => {
-  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
-
+  const isDarkMode = useSelector((state) => state.darkMode.isDarkMode);
   return (
     <div className={`container-fluid p-0 m-0 ${isDarkMode && "dark-mode"}`}>
       <Navbar active={navActive} />
