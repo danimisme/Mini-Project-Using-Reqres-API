@@ -14,7 +14,8 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, users: action.payload };
     case "users/addUser": {
       const newId = state.users[state.users.length - 1].id + 1;
-      const newUser = { id: newId, ...action.payload };
+      const newUser = action.payload;
+      newUser.id = newId;
       const updatedUsers = [...state.users, newUser];
       localStorage.setItem("users", JSON.stringify(updatedUsers));
       return {
@@ -26,6 +27,18 @@ const usersReducer = (state = initialState, action) => {
       const updatedUsers = state.users.filter(
         (user) => user.id !== action.payload
       );
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+      return {
+        ...state,
+        users: updatedUsers,
+      };
+    }
+    case "users/editUser": {
+      const userIndex = state.users.findIndex(
+        (user) => user.id === action.payload.id
+      );
+      const updatedUsers = [...state.users];
+      updatedUsers[userIndex] = action.payload;
       localStorage.setItem("users", JSON.stringify(updatedUsers));
       return {
         ...state,
@@ -47,5 +60,9 @@ export const addUser = (payload) => {
 
 export const deleteUser = (payload) => {
   return { type: "users/deleteUser", payload };
+};
+
+export const editUser = (payload) => {
+  return { type: "users/editUser", payload };
 };
 export default usersReducer;
