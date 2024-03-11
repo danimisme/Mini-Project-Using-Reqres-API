@@ -4,6 +4,25 @@ import { useDispatch, useSelector } from "react-redux";
 const UserForm = () => {
   const modalShow = useSelector((state) => state.modalShow.modalShow);
   const dispatch = useDispatch();
+
+  const handleAddUser = (e) => {
+    e.preventDefault();
+    const user = {
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
+      email: e.target.email.value,
+      avatar: e.target.avatar.value,
+    };
+
+    addUser(user);
+    dispatch(hide());
+    e.target.reset();
+  };
+
+  const addUser = (user) => {
+    console.log(user);
+  };
+
   return (
     <div className={`modal ${modalShow ? "show" : "hide"}`}>
       <div className="user-form-container">
@@ -11,7 +30,7 @@ const UserForm = () => {
         <span className="close-button" onClick={() => dispatch(hide())}>
           &times;
         </span>
-        <form>
+        <form onSubmit={handleAddUser}>
           <InputForm
             name="firstName"
             label="First Name"
@@ -36,6 +55,9 @@ const UserForm = () => {
             type="text"
             placeholder="Enter Your Avatar Link ..."
           />
+          <button type="submit" className="btn btn-dark d-block ms-auto me-3">
+            Save
+          </button>
         </form>
       </div>
     </div>
