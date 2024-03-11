@@ -1,6 +1,5 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-
 export const loginProcess = (data, callback) => {
   axios
     .post("https://reqres.in/api/login", data)
@@ -34,24 +33,21 @@ export const registerProcess = (data, callback) => {
     });
 };
 
-export const getListUsers = async (page, callback) => {
-  const users = [];
-  if (localStorage.getItem("users")) {
-    callback(JSON.parse(localStorage.getItem("users")));
-    console.log("get users from local storage");
-  } else if (!localStorage.getItem("users")) {
+export const getListUsers = () => {
+  return new Promise(async (resolve, reject) => {
     try {
+      const listUser = [];
       for (let i = 1; i <= 12; i++) {
         const user = await axios.get(`https://reqres.in/api/users/${i}`);
-        users.push(user.data.data);
+        listUser.push(user.data.data);
       }
-      localStorage.setItem("users", JSON.stringify(users));
-      callback(users);
       console.log("get users from api");
+      resolve(listUser);
     } catch (error) {
       console.log(error);
+      reject(error);
     }
-  }
+  });
 };
 
 export const getUser = (page, callback) => {
