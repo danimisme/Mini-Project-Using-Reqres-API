@@ -15,7 +15,10 @@ const usersReducer = (state = initialState, action) => {
     case "users/addUser":
       localStorage.setItem(
         "users",
-        JSON.stringify([...state.users, action.payload])
+        JSON.stringify([
+          ...state.users,
+          { id: state.users.length + 1, ...action.payload },
+        ])
       );
       return {
         ...state,
