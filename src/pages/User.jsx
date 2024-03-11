@@ -2,19 +2,26 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Fragments/Pagination";
 import Animation from "../../aos";
-import { getUser } from "../utils/apiUtils";
 import UserDetailCard from "../components/Fragments/UserDetailCard";
 import Layout from "../components/Layouts/Layout";
 import { useSelector } from "react-redux";
 const User = () => {
   let { id } = useParams();
   const [user, setUser] = useState({});
-  const [page, setPage] = useState(Number(id));
+  const [page, setPage] = useState(0);
 
   const listUser = useSelector((state) => state.users.users);
 
   useEffect(() => {
-    getUser(page, setUser);
+    listUser.map((user, i) => {
+      if (user.id === Number(id)) {
+        setPage(i + 1);
+      }
+    });
+  }, [id]);
+
+  useEffect(() => {
+    setUser(listUser[page - 1]);
     Animation();
   }, [page]);
 

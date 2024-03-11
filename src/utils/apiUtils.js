@@ -49,12 +49,3 @@ export const getListUsers = () => {
     }
   });
 };
-
-export const getUser = (page, callback) => {
-  const users = JSON.parse(localStorage.getItem("users"));
-  for (const user of users) {
-    if (user.id === page) {
-      return callback(user);
-    }
-  }
-};
