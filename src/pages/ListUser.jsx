@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Pagination from "../components/Fragments/Pagination";
 import Card from "../components/Fragments/Card";
-import { getListUsers } from "../utils/apiUtils";
 import Layout from "../components/Layouts/Layout";
 import UserForm from "../components/Fragments/UserForm";
 import { show } from "../redux/reducers/modalShowReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ListUser = () => {
-  const [listUsers, setListUsers] = useState([]);
   const [page, setPage] = useState(1);
   const itemsPerPage = 6;
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
+  const listUsers = useSelector((state) => state.users.users);
   const totalPages = Math.ceil(listUsers.length / itemsPerPage);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    getListUsers(page, setListUsers);
-  }, [page]);
 
   return (
     <Layout navActive="List User">
