@@ -27,6 +27,16 @@ const usersReducer = (state = initialState, action) => {
           { id: state.users.length + 1, ...action.payload },
         ],
       };
+    case "users/deleteUser": {
+      const updatedUsers = state.users.filter(
+        (user) => user.id !== action.payload
+      );
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+      return {
+        ...state,
+        users: updatedUsers,
+      };
+    }
     default:
       return state;
   }
@@ -40,4 +50,7 @@ export const addUser = (payload) => {
   return { type: "users/addUser", payload };
 };
 
+export const deleteUser = (payload) => {
+  return { type: "users/deleteUser", payload };
+};
 export default usersReducer;
