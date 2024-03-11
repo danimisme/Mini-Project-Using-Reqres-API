@@ -1,7 +1,11 @@
 import { getListUsers } from "../../utils/apiUtils";
 
+if (!localStorage.getItem("users")) {
+  localStorage.setItem("users", JSON.stringify(await getListUsers()));
+}
+
 const initialState = {
-  users: JSON.parse(localStorage.getItem("users")) || (await getListUsers()),
+  users: JSON.parse(localStorage.getItem("users")),
 };
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
