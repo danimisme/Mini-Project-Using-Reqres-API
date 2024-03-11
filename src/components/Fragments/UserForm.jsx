@@ -1,23 +1,38 @@
 import InputForm from "../Elements/Input/InputForm";
 import { hide } from "../../redux/reducers/modalShowReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../../redux/reducers/usersReducer";
+import { addUser, editUser } from "../../redux/reducers/usersReducer";
+import { useEffect, useState } from "react";
 const UserForm = ({ formFor, data }) => {
   const modalShow = useSelector((state) => state.modalShow.modalShow);
+  const [user, setUser] = useState([]);
   const dispatch = useDispatch();
+  useEffect(() => {
+    setUser({
+      id: data?.id,
+      first_name: data?.first_name,
+      last_name: data?.last_name,
+      email: data?.email,
+      avatar: data?.avatar,
+    });
+  }, [data]);
 
   const handleAddUser = (e) => {
     e.preventDefault();
-    const user = {
-      firstName: e.target.firstName.value,
-      lastName: e.target.lastName.value,
-      email: e.target.email.value,
-      avatar: e.target.avatar.value,
-    };
-
     dispatch(addUser(user));
     dispatch(hide());
     e.target.reset();
+  };
+
+  const handleEditUser = (e) => {
+    e.preventDefault();
+    dispatch(editUser(user));
+    window.location.reload();
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
   };
 
   return (
@@ -27,34 +42,38 @@ const UserForm = ({ formFor, data }) => {
         <span className="close-button" onClick={() => dispatch(hide())}>
           &times;
         </span>
-        <form onSubmit={handleAddUser}>
+        <form onSubmit={formFor === "edit" ? handleEditUser : handleAddUser}>
           <InputForm
-            name="firstName"
+            name="first_name"
             label="First Name"
             type="text"
             placeholder="Enter Your First Name ..."
-            value={data?.first_name}
+            value={user.first_name}
+            onChange={handleInputChange}
           />
           <InputForm
-            name="lastName"
+            name="last_name"
             label="Last Name"
             type="text"
             placeholder="Enter Your Last Name ..."
-            value={data?.last_name}
+            value={user.last_name}
+            onChange={handleInputChange}
           />
           <InputForm
             name="email"
             label="Email"
             type="email"
             placeholder="Enter Your Email ..."
-            value={data?.email}
+            value={user.email}
+            onChange={handleInputChange}
           />
           <InputForm
             name="avatar"
             label="Avatar Link"
             type="text"
             placeholder="Enter Your Avatar Link ..."
-            value={data?.avatar}
+            value={user.avatar}
+            onChange={handleInputChange}
           />
           <button type="submit" className="btn btn-dark d-block ms-auto me-3">
             {formFor === "edit" ? (
