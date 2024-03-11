@@ -51,12 +51,10 @@ export const getListUsers = () => {
 };
 
 export const getUser = (page, callback) => {
-  axios
-    .get(`https://reqres.in/api/users/${page}`)
-    .then((res) => {
-      callback(res.data.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const users = JSON.parse(localStorage.getItem("users"));
+  for (const user of users) {
+    if (user.id === page) {
+      return callback(user);
+    }
+  }
 };
