@@ -12,21 +12,16 @@ const usersReducer = (state = initialState, action) => {
     case "users/setUsers":
       localStorage.setItem("users", JSON.stringify(action.payload));
       return { ...state, users: action.payload };
-    case "users/addUser":
-      localStorage.setItem(
-        "users",
-        JSON.stringify([
-          ...state.users,
-          { id: state.users.length + 1, ...action.payload },
-        ])
-      );
+    case "users/addUser": {
+      const newId = state.users[state.users.length - 1].id + 1;
+      const newUser = { id: newId, ...action.payload };
+      const updatedUsers = [...state.users, newUser];
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
       return {
         ...state,
-        users: [
-          ...state.users,
-          { id: state.users.length + 1, ...action.payload },
-        ],
+        users: updatedUsers,
       };
+    }
     case "users/deleteUser": {
       const updatedUsers = state.users.filter(
         (user) => user.id !== action.payload
