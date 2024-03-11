@@ -1,6 +1,7 @@
 import InputForm from "../Elements/Input/InputForm";
 import { hide } from "../../redux/reducers/modalShowReducer";
 import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../../redux/reducers/usersReducer";
 const UserForm = () => {
   const modalShow = useSelector((state) => state.modalShow.modalShow);
   const dispatch = useDispatch();
@@ -14,13 +15,9 @@ const UserForm = () => {
       avatar: e.target.avatar.value,
     };
 
-    addUser(user);
+    dispatch(addUser(user));
     dispatch(hide());
     e.target.reset();
-  };
-
-  const addUser = (user) => {
-    console.log(user);
   };
 
   return (
