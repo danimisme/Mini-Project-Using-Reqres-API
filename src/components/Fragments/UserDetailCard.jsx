@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { deleteUser } from "../../redux/reducers/usersReducer";
 
 const UserDetailCard = (props) => {
   const { first_name, last_name, email, avatar, id } = props;
+  const dispatch = useDispatch();
+
+  const handleDelete = (id) => {
+    dispatch(deleteUser(id));
+    window.location.reload();
+  };
   return (
     <>
       <div className="row justify-content-center gap-1">
@@ -26,6 +34,15 @@ const UserDetailCard = (props) => {
         </div>
       </div>
       <div className="button-container d-flex justify-content-end col-10">
+        <button className="btn btn-primary me-2">
+          <i className="bi bi-pencil-fill me-1 "></i> Edit
+        </button>
+        <button
+          className="btn btn-danger me-2"
+          onClick={() => handleDelete(id)}
+        >
+          <i className="bi bi-trash3-fill"></i>Delete
+        </button>
         <Link to={`/`} className="btn btn-dark">
           Back
         </Link>
