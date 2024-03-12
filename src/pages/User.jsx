@@ -18,13 +18,12 @@ const User = () => {
     listUser.map((user, i) => {
       if (user.id === Number(id)) {
         setPage(i + 1);
+      } else {
+        // handle user not found
+        setPage(1);
       }
     });
-    // user not found handler
-    if (listUser.id === undefined) {
-      setPage(1);
-    }
-  }, [id]);
+  }, [id, listUser]);
 
   useEffect(() => {
     if (listUser.length === 0) {
