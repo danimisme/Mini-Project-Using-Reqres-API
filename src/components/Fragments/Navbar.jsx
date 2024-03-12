@@ -92,7 +92,7 @@ const Navbar = ({ active }) => {
           <>
             <button
               className="btn btn-outline-secondary rounded-pill ms-2 "
-              onClick={() => setIsDarkMode(!isDarkMode)}
+              onClick={() => dispatch(setDarkMode())}
             >
               <i
                 className={`bi ${
