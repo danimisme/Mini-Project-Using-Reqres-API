@@ -22,11 +22,19 @@ const UserForm = ({ formFor, data }) => {
   const handleAddUser = (e) => {
     e.preventDefault();
     dispatch(hide());
-    e.target.reset();
+    resetUser(e);
     toast.success(`${e.target.first_name.value} Added Successfully`);
     setTimeout(() => {
       dispatch(addUser(user));
     }, 1000);
+  };
+
+  const resetUser = (e) => {
+    e.target.first_name.value = "";
+    e.target.last_name.value = "";
+    e.target.email.value = "";
+    e.target.avatar.value = "";
+    setUser({ ...user, first_name: "", last_name: "", email: "", avatar: "" });
   };
 
   const handleEditUser = (e) => {
