@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { deleteUser } from "../../redux/reducers/usersReducer";
 import UserForm from "./UserForm";
 import { show } from "../../redux/reducers/modalShowReducer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserDetailCard = (props) => {
   const { first_name, last_name, email, avatar, id } = props;
@@ -12,6 +14,7 @@ const UserDetailCard = (props) => {
 
   const handleDelete = (id) => {
     dispatch(deleteUser(id));
+    toast.success(`${first_name} Deleted Successfully`);
     setTimeout(() => {
       const firstUserId = listUser[0].id;
       window.location.href = `/user/${firstUserId}`;
@@ -21,6 +24,7 @@ const UserDetailCard = (props) => {
   return (
     <>
       <UserForm formFor="edit" data={user} />
+      <ToastContainer position="bottom-right" autoClose={1000} theme="dark" />
       <div className="row justify-content-center gap-1">
         <div className="col-8 col-md-6 col-lg-4">
           <img
