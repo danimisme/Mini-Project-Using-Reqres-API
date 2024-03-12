@@ -17,7 +17,11 @@ const UserDetailCard = (props) => {
     toast.success(`${first_name} Deleted Successfully`);
     setTimeout(() => {
       const firstUserId = listUser[0].id;
-      window.location.href = `/user/${firstUserId}`;
+      if (firstUserId === id) {
+        window.location.href = `/user/${listUser[1].id}`;
+      } else {
+        window.location.href = `/user/${listUser[0].id}`;
+      }
     }, 2000);
   };
 
