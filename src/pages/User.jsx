@@ -18,6 +18,10 @@ const User = () => {
         setPage(i + 1);
       }
     });
+    // user not found handler
+    if (listUser.id === undefined) {
+      setPage(1);
+    }
   }, [id]);
 
   useEffect(() => {
