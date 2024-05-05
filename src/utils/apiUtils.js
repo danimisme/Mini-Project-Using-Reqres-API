@@ -33,19 +33,17 @@ export const registerProcess = (data, callback) => {
     });
 };
 
-export const getListUsers = () => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const listUser = [];
-      for (let i = 1; i <= 12; i++) {
-        const user = await axios.get(`https://reqres.in/api/users/${i}`);
-        listUser.push(user.data.data);
-      }
-      console.log("get users from api");
-      resolve(listUser);
-    } catch (error) {
-      console.log(error);
-      reject(error);
+export const getListUsers = async () => {
+  try {
+    const listUser = [];
+    for (let i = 1; i <= 12; i++) {
+      const user = await axios.get(`https://reqres.in/api/users/${i}`);
+      listUser.push(user.data.data);
     }
-  });
+    console.log("get users from api");
+    return listUser;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
 };
