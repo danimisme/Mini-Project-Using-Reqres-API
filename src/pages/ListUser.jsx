@@ -6,6 +6,7 @@ import UserForm from "../components/Fragments/UserForm";
 import { show } from "../redux/reducers/modalShowReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { getListUsers } from "../utils/apiUtils";
+import { setUsers } from "../redux/reducers/usersReducer";
 
 const ListUser = () => {
   const [page, setPage] = useState(1);
@@ -13,15 +14,22 @@ const ListUser = () => {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const listUsers = useSelector((state) => state.users.users);
-  const totalPages = Math.ceil(listUsers.length / itemsPerPage);
+  const [totalPages, setTotalPages] = useState(2);
   const dispatch = useDispatch();
-
   useEffect(() => {
-    if (!localStorage.getItem("users")) {
-      const users = getListUsers();
-      localStorage.setItem("users", JSON.stringify(users));
+    let users = JSON.parse(localStorage.getItem("users"));
+    if (!users) {
+      users = getListUsers().then((res) => {
+        localStorage.setItem("users", JSON.stringify(res));
+        dispatch(setUsers(res));
+        window.location.reload();
+        return res;
+      });
     }
   }, []);
+  useEffect(() => {
+    setTotalPages(Math.ceil(listUsers.length / itemsPerPage));
+  }, [listUsers]);
 
   return (
     <Layout navActive="List User">
@@ -34,11 +42,13 @@ const ListUser = () => {
         >
           <i className="bi bi-person-plus-fill me-2"></i>Add User
         </button>
-        <div className="row  justify-content-center gap-1">
-          {listUsers.slice(startIndex, endIndex).map((user) => (
-            <Card key={user.id} {...user} />
-          ))}
-        </div>
+        {listUsers && (
+          <div className="row  justify-content-center gap-1">
+            {listUsers.slice(startIndex, endIndex).map((user) => (
+              <Card key={user.id} {...user} />
+            ))}
+          </div>
+        )}
         <Pagination page={page} setPage={setPage} pages={totalPages} />
       </div>
     </Layout>
